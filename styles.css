@@ -1,0 +1,236 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+:root {
+  --background: #222831;
+}
+
+body {
+  background-color: var(--background);
+  color: white;
+  font-family: "Fredericka the Great", cursive;
+}
+
+.grid-container {
+  display: grid;
+  width: 450px;
+  height: 450px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+
+.cell {
+  border: 15px solid rgba(255, 255, 255, 0.8);
+  border-image: url("https://www.unicefusa.org/sites/default/files/answer-box.png")
+    30 round;
+  padding: 10px;
+}
+
+.grid-container > *:not(:last-child) {
+  border-right: none;
+  border-bottom: none;
+}
+
+.grid-container > *:nth-last-child(-n + 3) {
+  border-bottom: none;
+}
+
+.grid-container > *:nth-child(3n) {
+  border-right: none;
+}
+
+.grid-container .cell:nth-child(3n + 1) {
+  border-left: none;
+}
+
+.grid-container > div:nth-child(-n + 3) {
+  border-top: none;
+}
+
+h1 {
+  font-size: 4.5rem;
+  margin-top: 40px;
+  text-align: center;
+}
+
+body > div:first-child {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+}
+
+.player-score,
+.computer-score {
+  font-size: 8rem;
+  text-align: center;
+}
+
+div > h3 {
+  text-align: center;
+  margin-top: 60px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.main-console {
+  width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: -65px;
+  box-shadow: -3px 5px 15px 5px rgba(255, 255, 255, 0.1);
+}
+
+div > button {
+  width: 230px;
+  padding: 15px;
+  margin: 30px 15px 30px 15px;
+  background-color: var(--background);
+  border-radius: 15px;
+  border: solid 2px white;
+  color: white;
+  font-weight: bolder;
+  font-size: 1.1rem;
+  transition: transform 0.2s ease-in-out;
+}
+
+.restart {
+  width: 220px;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  transition: transform 0.2s ease-in-out;
+}
+
+button:hover {
+  background-color: #0f1216;
+  transform: scale(1.05);
+}
+
+.cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 4rem;
+}
