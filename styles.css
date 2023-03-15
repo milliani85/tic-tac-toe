@@ -184,8 +184,8 @@ body > div:first-child {
   grid-template-columns: 1fr 2fr 1fr;
 }
 
-.player-score,
-.computer-score {
+.playerone-score,
+.playertwo-score {
   font-size: 8rem;
   text-align: center;
 }
@@ -207,7 +207,8 @@ div > h3 {
   box-shadow: -3px 5px 15px 5px rgba(255, 255, 255, 0.1);
 }
 
-.restart {
+.restart,
+.next-round {
   padding: 15px;
   margin: 30px 15px 30px 15px;
   background-color: var(--background);
