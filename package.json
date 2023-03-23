@@ -1,0 +1,38 @@
+{
+  "name": "tic-tac-toe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint .",
+  "lint:fix": "eslint . --fix"
+  },
+  "eslintConfig": {
+  "extends": ["wesbos"],
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "singleQuote": true,
+        "endOfLine": "auto",
+        "tabWidth": 4
+      }
+    ]
+  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/milliani85/tic-tac-toe.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/milliani85/tic-tac-toe/issues"
+  },
+  "homepage": "https://github.com/milliani85/tic-tac-toe#readme",
+  "dependencies": {
+    "eslint-config-wesbos": "^3.2.3"
+  }
+}
