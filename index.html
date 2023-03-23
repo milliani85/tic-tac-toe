@@ -13,12 +13,12 @@
 <body>
     <div>
         <div>
-            <h3>PLAYER SCORE</h3>
+            <h3 class="player-one-name">Player Score</h3>
             <div class="playerone-score">0</div>
         </div>
         <h1>Tic Tac Toe</h1>
         <div>
-            <h3>PLAYER SCORE</h3>
+            <h3 class="player-two-name">Player Score</h3>
             <div class="playertwo-score">0</div>
         </div>
     </div>
@@ -42,7 +42,23 @@
             <button class="restart">RESTART</button>
         </div>
     </div>
-
+    <div class="form-container form-hidden">
+        <h4>Add Players</h4>
+        <form class="new-player-form">
+            <div class="input-container">
+                <label for="player-one-input">Player One Name</label>
+                <input type="text" id="player-one-input" name="player-one-input">
+            </div>
+            <div class="input-container">
+                <label for="player-two-input">Player Two Name</label>
+                <input type="text" id="player-two-input" name="player-two-input">
+            </div>           
+            <div class="input-container">
+                <input type="submit" value="Submit">
+            </div>
+        </form>
+    </div>
+    <div class="overlay"></div>
     <script src="script.js"></script>
 </body>
 </html>

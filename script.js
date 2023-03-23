@@ -41,7 +41,7 @@ const gameboard = (() => {
             addChoiceArray(index, gameboard.currentMark);
         }
         controlFlow.winner(gameboardArray);
-        controlFlow.draw();
+        controlFlow.draw(gameboardArray);
     }
 
     nextRoundButton.addEventListener('click', () => {
@@ -64,6 +64,7 @@ const gameboard = (() => {
         controlFlow.gameUpdates.innerText = '';
         enableGrid();
         controlFlow.resetScore();
+        players.showForm();
     })
 
     return {
@@ -72,6 +73,7 @@ const gameboard = (() => {
         playerOneMark,
         playerTwoMark,
         grid,
+        restart,
         disableGrid
     };
     
@@ -79,6 +81,53 @@ const gameboard = (() => {
 
 
 // PLAYERS
+
+const players = (() => {
+
+    const formContainer = document.querySelector('.form-container');
+    const overlay = document.querySelector('.overlay');
+    const form = document.querySelector('.new-player-form');
+    const playerOneName = document.querySelector('.player-one-name');
+    const playerTwoName = document.querySelector('.player-two-name');
+
+    showForm();
+
+    //Show player name form when restart is clicked
+    function showForm() {
+        formContainer.classList.toggle('form-hidden')
+        overlay.classList.toggle('overlay-on')
+    }
+
+    //Hide form and overlay when area around form is clicked.
+    overlay.addEventListener('click', (e) => {
+        if (e.target.classList.contains('overlay-on')) {
+            formContainer.classList.add('form-hidden');
+            overlay.classList.toggle('overlay-on');
+        }
+    })
+
+    function getName() {
+        playerOneInput = document.getElementById("player-one-input");
+        playerTwoInput = document.getElementById("player-two-input");
+        updateName(playerOneInput.value, playerTwoInput.value);
+    }
+
+    function updateName(playerOne, playerTwo) {
+        playerOneName.innerText = `${playerOne}'s Score`
+        playerTwoName.innerText = `${playerTwo}'s Score`
+        showForm();
+    }
+    
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        getName();
+    });
+
+    return {
+        showForm
+    }
+
+})()
 
 
 // CONTROL FLOW
@@ -136,10 +185,10 @@ const controlFlow = (() => {
     }    
 
     // Analyze if the game has finished as a draw.
-    function draw() {
+    function draw(gameboardArray) {
         let isDraw = true;
-            for (let i = 0; i < gameboard.gameboardArray.length; i++) {
-                if (gameboard.gameboardArray[i] !== 'O' && gameboard.gameboardArray[i] !== 'X') {
+            for (let i = 0; i < gameboardArray.length; i++) {
+                if (gameboardArray[i] !== 'O' && gameboardArray[i] !== 'X') {
                     isDraw = false;
                     break;
                 }            
