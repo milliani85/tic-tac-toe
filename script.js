@@ -63,7 +63,7 @@ const gameboard = (() => {
         controlFlow.gameUpdates.innerText = '';
         enableGrid();
         controlFlow.resetScore();
-        players.showForm();
+        playerForm.showForm();
     });
 
     return {
@@ -79,19 +79,47 @@ const gameboard = (() => {
 
 // PLAYERS
 
-const players = (() => {
+const players = (name) => ({ name });
+
+// PLAYER DETAILS FORM
+
+const playerForm = (() => {
+    const form = document.querySelector('.new-player-form');
+    const playerOneInput = document.querySelector('#player-one-input');
+    const playerTwoInput = document.querySelector('#player-two-input');
     const formContainer = document.querySelector('.form-container');
     const overlay = document.querySelector('.overlay');
-    const form = document.querySelector('.new-player-form');
     const playerOneName = document.querySelector('.player-one-name');
     const playerTwoName = document.querySelector('.player-two-name');
 
+    let playerOne = null;
+    let playerTwo = null;
+
     showForm();
 
-    // Show player name form when restart is clicked
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        processPlayers(playerOneInput.value, playerTwoInput.value);
+        showForm();
+    });
+
+    // Displays and hides the player name form.
     function showForm() {
         formContainer.classList.toggle('form-hidden');
         overlay.classList.toggle('overlay-on');
+    }
+
+    // Creates player objects.
+    function processPlayers(playerOneInputValue, playerTwoInputValue) {
+        playerOne = players(playerOneInputValue);
+        playerTwo = players(playerTwoInputValue);
+        showPlayersName();
+    }
+
+    // Display players name above the score.
+    function showPlayersName() {
+        playerOneName.innerText = `${playerOne.name}'s Score`;
+        playerTwoName.innerText = `${playerTwo.name}'s Score`;
     }
 
     // Hide form and overlay when area around form is clicked.
@@ -102,27 +130,10 @@ const players = (() => {
         }
     });
 
-    // Retrieve names from form.
-    function getName() {
-        const playerOneInput = document.getElementById('player-one-input');
-        const playerTwoInput = document.getElementById('player-two-input');
-        updateName(playerOneInput.value, playerTwoInput.value);
-    }
-
-    // Update players name on the scoreboard.
-    function updateName(playerOne, playerTwo) {
-        playerOneName.innerText = `${playerOne}'s Score`;
-        playerTwoName.innerText = `${playerTwo}'s Score`;
-        showForm();
-    }
-
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        getName();
-    });
-
     return {
         showForm,
+        playerOne,
+        playerTwo,
     };
 })();
 
